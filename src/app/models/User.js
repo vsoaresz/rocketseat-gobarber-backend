@@ -21,11 +21,13 @@ class User extends Model {
     });
 
     return this;
-  };
+  }
 
-  checkPassword(password){
-    return bcrypt.compare(password, this.password_hash);
-  };
+  checkPassword(password) {
+    const compare = bcrypt.compare(password, this.password_hash);
+
+    return compare;
+  }
 }
 
 export default User;
