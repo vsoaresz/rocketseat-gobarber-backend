@@ -7,7 +7,7 @@ const jobs = [CancellationMail];
 class Queue {
   constructor() {
     this.queues = {};
-    
+
     this.init();
   }
 
@@ -17,7 +17,7 @@ class Queue {
         bee: new Bee(key, {
           redis: redisConfig,
         }),
-        handle,  
+        handle,
       };
     });
   }
@@ -27,7 +27,7 @@ class Queue {
   }
 
   processQueue() {
-    jobs.forEach(job => {
+    jobs.forEach((job) => {
       const { bee, handle } = this.queues[job.key];
 
       bee.on('failed', this.handleFailure).process(handle);
